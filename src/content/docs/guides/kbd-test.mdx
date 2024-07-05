@@ -1,0 +1,48 @@
+---
+title: KBD test
+description: Testing out the custom KBD component
+---
+
+import KBD from "../../../components/KBD.astro";
+import { Tabs, TabItem, Card, CardGrid, Aside, Steps } from "@astrojs/starlight/components";
+
+## In Markdown
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra arcu hendrerit, vehicula ante eget, <KBD>Cmd</KBD> + <KBD>F</KBD> consequat enim. Etiam consectetur urna odio, vitae congue <KBD>Ctrl</KBD> + <KBD>F</KBD> sapien molestie id. In tempor cursus finibus. Phasellus orci odio, dignissim eget faucibus eu, imperdiet eget risus. Ut dictum velit odio, eget mattis felis scelerisque et. <KBD>Cmd</KBD> + <KBD>F</KBD> Sed scelerisque felis et eros eleifend, tempus consectetur libero ullamcorper.
+
+### Inside Tabs
+
+<Tabs>
+  <TabItem label="Stars" icon="star">
+    <KBD>Cmd</KBD> + <KBD>F</KBD>
+  </TabItem>
+  <TabItem label="Moons" icon="moon">
+    <KBD>Ctrl</KBD> + <KBD>F</KBD>
+  </TabItem>
+</Tabs>
+
+### Inside Cards
+
+<Card title="Check this out">Ut dictum velit odio <KBD>Cmd</KBD> + <KBD>F</KBD> </Card>
+
+<CardGrid>
+  <Card title="Stars" icon="star">
+    <KBD>Cmd</KBD> + <KBD>F</KBD> 
+  </Card>
+  <Card title="Moons" icon="moon">
+    <KBD>Ctrl</KBD> + <KBD>F</KBD>
+  </Card>
+</CardGrid>
+
+
+### Inside Asides
+<Aside> <KBD>Ctrl</KBD> + <KBD>F</KBD> </Aside>
+
+### Inside Steps
+<Steps>
+
+1. Press <KBD>Ctrl</KBD> + <KBD>C</KBD> to copy current line in your VSCode instance
+
+2. Press <KBD>Ctrl</KBD> & <KBD>K</KBD> to toggle the Starlight Searchbar
+
+</Steps>

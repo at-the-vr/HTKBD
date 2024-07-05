@@ -1,0 +1,47 @@
+---
+title: Create and Use
+description: A guide to make your own custom KBD component for your Starlight site
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+<Steps>
+
+1. Create your custom KBD Component
+
+    ```html title="src/components/KBD.astro"
+    ---
+    ---
+
+    <kbd> <slot /> </kbd>
+
+    <style>
+      kbd {
+        margin-top: 0 !important; //override sl-content margin of 1rem
+        display: inline-block;
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 0.25rem;
+        background-color: var(--sl-color-gray-6);
+        box-shadow: 0 1px 1px var(--sl-color-gray-5), 0 2px 0 0 var(
+              --sl-color-gray-6
+            ) inset;
+        font-size: var(--sl-text-xs);
+        font-weight: 700;
+        line-height: 1;
+        padding: 2px 4px;
+      }
+    </style>
+    ```
+
+2. Import and use in your Markdown
+
+    ```mdx title="src/docs/guides/test.mdx"
+    ---
+    ---
+    import KBD from "../../../components/KBD.astro";
+
+    Lorem ipsum dolor sit amet <KBD>Cmd</KBD> + <KBD>F</KBD> consequat enim. 
+    ```
+</Steps>
+
+
