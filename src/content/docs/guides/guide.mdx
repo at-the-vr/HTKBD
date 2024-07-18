@@ -2,36 +2,95 @@
 title: Create and Use
 description: A guide to make your own custom KBD component for your Starlight site
 ---
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
-import { Steps } from "@astrojs/starlight/components";
+import { LinkCard, CardGrid, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Steps>
 
 1. Create your custom KBD Component
 
-    ```html title="src/components/KBD.astro"
-    ---
-    ---
+    <Tabs>
+      <TabItem label="Default" icon="seti:default">
+        ```html title="src/components/KBD.astro"
+        ---
+        ---
 
-    <kbd> <slot /> </kbd>
+        <kbd> <slot /> </kbd>
 
-    <style>
-      kbd {
-        margin-top: 0 !important; //override sl-content margin of 1rem
-        display: inline-block;
-        border: 1px solid var(--sl-color-gray-5);
-        border-radius: 0.25rem;
-        background-color: var(--sl-color-gray-6);
-        box-shadow: 0 1px 1px var(--sl-color-gray-5), 0 2px 0 0 var(
-              --sl-color-gray-6
-            ) inset;
-        font-size: var(--sl-text-xs);
-        font-weight: 700;
-        line-height: 1;
-        padding: 2px 4px;
-      }
-    </style>
-    ```
+        <style>
+          kbd {
+            margin-top: 0 !important; //override sl-content margin of 1rem
+            display: inline-block;
+            border: 1px solid var(--sl-color-gray-5);
+            border-radius: 0.25rem;
+            background-color: var(--sl-color-gray-6);
+            box-shadow: 0 1px 1px var(--sl-color-gray-5), 0 2px 0 0 var(
+                  --sl-color-gray-6
+                ) inset;
+            font-size: var(--sl-text-xs);
+            font-weight: 700;
+            line-height: 1;
+            padding: 2px 4px;
+          }
+        </style>
+        ```
+      </TabItem>
+      <TabItem label="Asides" icon="seti:smarty">
+        ```html title="src/components/KBD.astro"
+        ---
+        // the same component with support for aside colors and borders
+        ---
+
+        <kbd> <slot /> </kbd>
+
+        <style is:global>
+          kbd {
+            margin-top: 0 !important; //override sl-content margin of 1rem
+            display: inline-block;
+            border: 1px solid var(--sl-color-gray-5);
+            border-radius: 0.25rem;
+            background-color: var(--sl-color-gray-6);
+            box-shadow: 0 1px 1px var(--sl-color-gray-5), 0 2px 0 0 var(
+                  --sl-color-gray-6
+                ) inset;
+            font-size: var(--sl-text-xs);
+            font-weight: 700;
+            line-height: 1;
+            padding: 2px 4px;
+          }
+          .sl-markdown-content
+            .starlight-aside
+            :is(kbd):not(:where(.not-content *)) {
+            border-color: var(--sl-color-gray-4);
+          }
+          @supports (
+            border-color: color-mix(in srgb, var(--sl-color-asides-text-accent) 30%, transparent)
+          ) {
+            .sl-markdown-content
+              .starlight-aside
+              :is(kbd):not(:where(.not-content *)) {
+              border-color: color-mix(
+                in srgb,
+                var(--sl-color-asides-text-accent) 30%,
+                transparent
+              );
+            }
+          }
+          @supports (
+            border-color: color-mix(in srgb, var(--sl-color-asides-text-accent) 12%, transparent)
+          ) {
+            .sl-markdown-content .starlight-aside kbd:not(:where(.not-content *)) {
+              background-color: color-mix(
+                in srgb,
+                var(--sl-color-asides-text-accent) 12%,
+                transparent
+              );
+              box-shadow: 0 1px 1px var(--sl-color-asides-text-accent);
+            }
+          }
+        </style>
+        ```
+      </TabItem>
+    </Tabs>
 
 2. Import and use in your Markdown
 

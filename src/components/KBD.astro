@@ -4,7 +4,7 @@
 
 <kbd class="custom-kbd"> <slot /> </kbd>
 
-<style>
+<style is:global>
   kbd {
     margin-top: 0 !important;
     display: inline-block;
@@ -20,5 +20,33 @@
     padding: 2px 4px;
     white-space: nowrap;
     overflow-wrap: anywhere;
+  }
+  .sl-markdown-content .starlight-aside :is(kbd):not(:where(.not-content *)) {
+    border-color: var(--sl-color-gray-4);
+  }
+  @supports (
+    border-color:
+      color-mix(in srgb, var(--sl-color-asides-text-accent) 30%, transparent)
+  ) {
+    .sl-markdown-content .starlight-aside :is(kbd):not(:where(.not-content *)) {
+      border-color: color-mix(
+        in srgb,
+        var(--sl-color-asides-text-accent) 30%,
+        transparent
+      );
+    }
+  }
+  @supports (
+    border-color:
+      color-mix(in srgb, var(--sl-color-asides-text-accent) 12%, transparent)
+  ) {
+    .sl-markdown-content .starlight-aside kbd:not(:where(.not-content *)) {
+      background-color: color-mix(
+        in srgb,
+        var(--sl-color-asides-text-accent) 12%,
+        transparent
+      );
+      box-shadow: 0 1px 1px var(--sl-color-asides-text-accent);
+    }
   }
 </style>
